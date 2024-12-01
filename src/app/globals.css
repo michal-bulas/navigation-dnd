@@ -2,20 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  @apply bg-main-bg flex min-h-screen flex-col items-center justify-between;
+}
+
+.form-item {
+  @apply flex flex-col gap-y-0.5;
+}
+
+.form-input {
+  @apply border-border focus:border-primary h-10 w-full rounded-md border bg-transparent px-3 py-2 shadow-sm outline-none;
+}
+
+.form-error {
+  @apply text-sm text-red-600;
+}
+
+.form-button {
+  @apply rounded-lg border border-solid bg-white px-4 py-2.5 text-sm font-semibold;
 }

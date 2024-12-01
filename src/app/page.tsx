@@ -1,3 +1,9 @@
+import Menu from '@/components/menu/Menu';
+
 export default function Home() {
-  return <div></div>;
+  return (
+    <div className='w-full max-w-screen-lg py-20'>
+      <Menu />
+    </div>
+  );
 }
