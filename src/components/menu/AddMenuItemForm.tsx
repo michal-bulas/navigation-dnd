@@ -14,12 +14,23 @@ import { MenuItemSchema, TMenuItemSchema } from '@/schemas/MenuItemSchema';
 interface AddMenuFormProps {
   type: 'EDIT' | 'ADD';
   item?: MenuItemProps;
-  parent?: string;
-
+  parentId?: string;
+  onFormAdd: (
+    newItem: Omit<MenuItemProps, 'id'>,
+    parentId: string | null
+  ) => void;
+  onFormEdit?: (updatedData: Omit<MenuItemProps, 'id'>, itemId: string) => void;
   onFormClose: (value: boolean) => void;
 }
 
-const AddMenuForm = ({ type, item, onFormClose }: AddMenuFormProps) => {
+const AddMenuForm = ({
+  type,
+  item,
+  parentId,
+  onFormAdd,
+  onFormEdit,
+  onFormClose
+}: AddMenuFormProps) => {
   const {
     register,
     handleSubmit,
@@ -33,8 +44,9 @@ const AddMenuForm = ({ type, item, onFormClose }: AddMenuFormProps) => {
   });
 
   const onSubmit = (formMenuItem: TMenuItemSchema) => {
-    if (type === 'ADD') {
-    }
+    if (type === 'EDIT' && onFormEdit && item)
+      return onFormEdit({ ...formMenuItem, submenu: item.submenu }, item?.id);
+    return onFormAdd({ ...formMenuItem, submenu: [] }, parentId || null);
   };
 
   return (
