@@ -4,7 +4,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  @apply bg-main-bg flex min-h-screen flex-col items-center justify-between;
+  @apply flex min-h-screen flex-col items-center justify-between bg-main-bg;
 }
 
 .form-item {
@@ -12,13 +12,9 @@ body {
 }
 
 .form-input {
-  @apply border-border focus:border-primary h-10 w-full rounded-md border bg-transparent px-3 py-2 shadow-sm outline-none;
+  @apply h-10 w-full rounded-md border border-border bg-transparent px-3 py-2 shadow-sm outline-none focus:border-primary;
 }
 
 .form-error {
   @apply text-sm text-red-600;
-}
-
-.form-button {
-  @apply rounded-lg border border-solid bg-white px-4 py-2.5 text-sm font-semibold;
 }
