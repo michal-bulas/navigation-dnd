@@ -15,7 +15,8 @@ import { MenuItemProps } from '@/types/MenuItem';
 
 const MenuItemsList = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const { menuItems, addMenuItem, editMenuItem, deleteMenuItem } = useMenu();
+  const { menuItems, setMenuItems, addMenuItem, editMenuItem, deleteMenuItem } =
+    useMenu();
 
   const addMenuItemHandler = (
     newItem: Omit<MenuItemProps, 'id'>,
@@ -37,14 +38,20 @@ const MenuItemsList = () => {
 
   const dragMenuItemEndHandler = (event: DragEndEvent) => {
     const { active, over } = event;
-    return dragMenuItem(menuItems, active, over);
+    const newOrder = dragMenuItem(menuItems, active, over);
+
+    if (!newOrder) return;
+    return setMenuItems(newOrder);
   };
 
   const dragSubMenuItemHandler = (
     parentId: string,
     newSubMenu: MenuItemProps[]
   ) => {
-    return dragSubMenuItem(menuItems, parentId, newSubMenu);
+    const newOrder = dragSubMenuItem(menuItems, parentId, newSubMenu);
+
+    if (!newOrder) return;
+    return setMenuItems(newOrder);
   };
 
   return (

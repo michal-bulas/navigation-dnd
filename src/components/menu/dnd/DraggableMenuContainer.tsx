@@ -73,7 +73,6 @@ const DraggableMenuContainer = ({
               editMenuItemHandler={editMenuItemHandler}
               deleteMenuItemHandler={deleteMenuItemHandler}
               dragSubMenuItemHandler={dragSubMenuItemHandler}
-              dragMenuItemEndHandler={dragMenuItemEndHandler}
             />
           ))}
         </ul>

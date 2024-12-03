@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 
+import { dragMenuItem } from '@/lib/dndUtils';
 import { DragEndEvent } from '@dnd-kit/core';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -33,7 +34,6 @@ interface DraggableMenuItemProps {
     parentId: string,
     newSubMenu: MenuItemProps[]
   ) => void;
-  dragMenuItemEndHandler: (event: DragEndEvent) => void;
 }
 
 const DraggableMenuItem = ({
@@ -42,7 +42,6 @@ const DraggableMenuItem = ({
   menuItem,
   addMenuItemHandler,
   deleteMenuItemHandler,
-  dragMenuItemEndHandler,
   dragSubMenuItemHandler,
   editMenuItemHandler
 }: DraggableMenuItemProps) => {
@@ -57,6 +56,14 @@ const DraggableMenuItem = ({
   const openEditFormHandler = () => {
     setTypeForm('EDIT');
     setIsFormOpen(true);
+  };
+
+  const dragMenuItemEndHandler = (event: DragEndEvent) => {
+    const { active, over } = event;
+    const newOrder = dragMenuItem(menuItem.submenu, active, over);
+    if (newOrder) {
+      dragSubMenuItemHandler(menuItem.id, newOrder);
+    }
   };
 
   const { attributes, listeners, setNodeRef, transform, transition } =
@@ -79,7 +86,7 @@ const DraggableMenuItem = ({
     >
       <div
         className={twMerge(
-          'relative flex max-h-[78px] items-center justify-between border-b border-l bg-white px-6 py-4'
+          'relative flex h-[78px] max-h-[78px] items-center justify-between border-b border-l bg-white px-6 py-4'
         )}
       >
         <div className='flex items-center gap-x-2 p-2.5'>
