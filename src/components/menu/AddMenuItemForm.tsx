@@ -65,7 +65,7 @@ const AddMenuItemForm = ({
           <div className='form-item'>
             <label
               htmlFor='name'
-              className='text-sm font-medium text-text-primary'
+              className='text-sm font-medium text-text-input'
             >
               Nazwa
             </label>
@@ -83,7 +83,7 @@ const AddMenuItemForm = ({
           <div className='form-item'>
             <label
               htmlFor='link'
-              className='font-medium text-text-primary'
+              className='text-sm font-medium text-text-input'
             >
               Link
             </label>

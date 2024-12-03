@@ -66,7 +66,7 @@ const MenuItemsList = () => {
         dragSubMenuItemHandler={dragSubMenuItemHandler}
       />
       {isFormOpen && (
-        <div className='border-primary-border border-b p-6'>
+        <div className='border-primary-border p-6'>
           <AddMenuItemForm
             type='ADD'
             onFormAdd={addMenuItemHandler}
@@ -75,7 +75,7 @@ const MenuItemsList = () => {
         </div>
       )}
 
-      <div className='bg-main-bg p-6'>
+      <div className='border-t bg-main-bg p-6'>
         <Button
           onClick={() => setIsFormOpen(true)}
           className='text-text-primary'

@@ -12,7 +12,7 @@ body {
 }
 
 .form-input {
-  @apply h-10 w-full rounded-md border border-border bg-transparent px-3 py-2 shadow-sm outline-none focus:border-primary;
+  @apply h-10 w-full rounded-lg border border-border bg-transparent px-3 py-2 shadow-sm outline-none focus:border-primary;
 }
 
 .form-error {

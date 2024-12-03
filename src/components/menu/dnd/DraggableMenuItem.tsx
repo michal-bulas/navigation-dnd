@@ -8,7 +8,6 @@ import { dragMenuItem } from '@/lib/dndUtils';
 import { DragEndEvent } from '@dnd-kit/core';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { twMerge } from 'tailwind-merge';
 
 import Button from '@/components/UI/Button';
 import AddMenuItemForm from '@/components/menu/AddMenuItemForm';
@@ -18,8 +17,7 @@ import MoveIcon from '@/components/svg/MoveIcon';
 import { MenuItemProps } from '@/types/MenuItem';
 
 interface DraggableMenuItemProps {
-  index: number;
-  itemsLength: number;
+  className: string;
   menuItem: MenuItemProps;
   addMenuItemHandler: (
     newItem: Omit<MenuItemProps, 'id'>,
@@ -37,8 +35,7 @@ interface DraggableMenuItemProps {
 }
 
 const DraggableMenuItem = ({
-  index,
-  itemsLength,
+  className,
   menuItem,
   addMenuItemHandler,
   deleteMenuItemHandler,
@@ -82,13 +79,8 @@ const DraggableMenuItem = ({
       {...attributes}
       {...listeners}
       style={style}
-      className=''
     >
-      <div
-        className={twMerge(
-          'relative flex h-[78px] max-h-[78px] items-center justify-between border-b border-l bg-white px-6 py-4'
-        )}
-      >
+      <div className={className}>
         <div className='flex items-center gap-x-2 p-2.5'>
           <div className='p-2.5'>
             <MoveIcon
@@ -135,7 +127,7 @@ const DraggableMenuItem = ({
       </div>
 
       {isFormOpen && (
-        <div className='form-container ml-16 p-6'>
+        <div className='ml-16 p-6'>
           <AddMenuItemForm
             type={typeForm}
             item={typeForm === 'EDIT' ? menuItem : undefined}
