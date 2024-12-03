@@ -60,7 +60,10 @@ const DraggableMenuContainer = ({
         items={menuItems.map((item) => item.id)}
         strategy={verticalListSortingStrategy}
       >
-        <ul className={type === 'SUB' ? '-mb-px ml-16' : ''}>
+        <ul
+          data-testid='draggable-menu-container'
+          className={type === 'SUB' ? '-mb-px ml-16' : ''}
+        >
           {menuItems.map((item, index) => (
             <DraggableMenuItem
               key={item.id}

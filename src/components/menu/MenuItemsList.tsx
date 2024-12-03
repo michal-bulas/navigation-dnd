@@ -2,8 +2,8 @@
 
 import { useState } from 'react';
 
-import { dragMenuItem, dragSubMenuItem } from '@/lib/dndUtils';
 import { useMenu } from '@/providers/MenuProvider';
+import { dragMenuItem, dragSubMenuItem } from '@/utils/dndUtils';
 import { DragEndEvent } from '@dnd-kit/core';
 
 import Button from '@/components/UI/Button';

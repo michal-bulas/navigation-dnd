@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid';
 
 import { MenuItemProps } from '@/types/MenuItem';
 
-interface MenuContextProps {
+export interface MenuContextProps {
   menuItems: MenuItemProps[];
   addMenuItem: (
     newItem: Omit<MenuItemProps, 'id'>,

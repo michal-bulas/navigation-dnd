@@ -64,6 +64,7 @@ const AddMenuItemForm = ({
         <div className='flex flex-1 flex-col gap-y-3'>
           <div className='form-item'>
             <label
+              data-testid='name-label'
               htmlFor='name'
               className='text-sm font-medium text-text-input'
             >
@@ -71,17 +72,26 @@ const AddMenuItemForm = ({
             </label>
 
             <input
+              data-testid='name-input'
               type='text'
               placeholder='np. Promocje'
               {...register('name')}
               className='form-input placeholder-text-secondary'
             />
 
-            {errors.name && <p className='form-error'>{errors.name.message}</p>}
+            {errors.name && (
+              <p
+                data-testid='name-error'
+                className='form-error'
+              >
+                {errors.name.message}
+              </p>
+            )}
           </div>
 
           <div className='form-item'>
             <label
+              data-testid='link-label'
               htmlFor='link'
               className='text-sm font-medium text-text-input'
             >
@@ -96,17 +106,26 @@ const AddMenuItemForm = ({
                 <SearchIcon size={20} />
               </label>
               <input
+                data-testid='link-input'
                 type='text'
                 placeholder='Wklej lub wyszukaj'
                 {...register('link')}
                 className='flex-1 placeholder-text-secondary outline-none'
               />
             </div>
-            {errors.link && <p className='form-error'>{errors.link.message}</p>}
+            {errors.link && (
+              <p
+                data-testid='link-error'
+                className='form-error'
+              >
+                {errors.link.message}
+              </p>
+            )}
           </div>
 
           <div className='mt-5 flex gap-x-2'>
             <Button
+              data-testid='form-cancel-button'
               type='button'
               onClick={() => onFormClose(false)}
               disabled={isSubmitting}
@@ -115,6 +134,7 @@ const AddMenuItemForm = ({
               Anuluj
             </Button>
             <Button
+              data-testid='form-submit-button'
               type='submit'
               disabled={isSubmitting}
               className='border-border-primary text-primary'
@@ -128,7 +148,10 @@ const AddMenuItemForm = ({
           onClick={() => onFormClose(false)}
           className='cursor-pointer p-2.5'
         >
-          <TrashIcon size={20} />
+          <TrashIcon
+            size={20}
+            className='text-text-secondary'
+          />
         </div>
       </form>
     </Card>

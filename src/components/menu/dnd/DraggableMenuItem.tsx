@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import Link from 'next/link';
 
-import { dragMenuItem } from '@/lib/dndUtils';
+import { dragMenuItem } from '@/utils/dndUtils';
 import { DragEndEvent } from '@dnd-kit/core';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
@@ -75,6 +75,7 @@ const DraggableMenuItem = ({
 
   return (
     <li
+      data-testid='draggable-menu-item'
       ref={setNodeRef}
       {...attributes}
       {...listeners}
@@ -104,6 +105,7 @@ const DraggableMenuItem = ({
 
         <div className='flex flex-nowrap text-nowrap'>
           <Button
+            data-testid='item-button-delete'
             onClick={() => deleteMenuItemHandler(menuItem.id)}
             className='rounded-r-none text-text-primary'
           >
@@ -111,6 +113,7 @@ const DraggableMenuItem = ({
           </Button>
 
           <Button
+            data-testid='item-button-edit'
             onClick={openEditFormHandler}
             className='rounded-none border-x-0 text-text-primary'
           >
@@ -118,6 +121,7 @@ const DraggableMenuItem = ({
           </Button>
 
           <Button
+            data-testid='item-button-add'
             onClick={openAddFormHandler}
             className='rounded-l-none text-text-primary'
           >
